@@ -16,14 +16,14 @@ const connection = new Pool({
 
 const app = express();
 
-app.get('/NOME DA ROTA', async (req, res) => {
+app.get('/status', async (req, res) => {
     const {id} = req.params;
 
-    const NOME DA VARIAVEL QUE CARREGA A ROTA = await connection.query('SELECT * FROM NOME DA TABELA A SER CONSULTADA WHERE id=$1',[id]),
-    console.log(NOME DA TABELA A SER CONSULTADA),
-    res.send(NOME DA TABELA A SER CONSULTADA)
+    const result = await connection.query('SELECT * FROM "user" WHERE id=$1',[id]),
+    console.log("users"),
+    res.send(users.row);
 
 });
 
 const port = process.env.PORT || 5000;
-app.listen(port, () => console.log('Server listening on port ${port}'));
+app.listen(port, () => console.log('Server listening on port ${process.env.PORT}'));
